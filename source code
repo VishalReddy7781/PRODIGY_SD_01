@@ -1,0 +1,60 @@
+#include <stdio.h>
+
+ 
+void convertFromCelsius(float temp);
+void convertFromFahrenheit(float temp);
+void convertFromKelvin(float temp);
+
+int main() {
+    float temperature;
+    char unit;
+
+ 
+    printf("Enter temperature value: ");
+    scanf("%f", &temperature);
+    printf("Enter unit of measurement (C for Celsius, F for Fahrenheit, K for Kelvin): ");
+    scanf(" %c", &unit);
+
+    
+    switch (unit) {
+        case 'C':
+        case 'c':
+            convertFromCelsius(temperature);
+            break;
+        case 'F':
+        case 'f':
+            convertFromFahrenheit(temperature);
+            break;
+        case 'K':
+        case 'k':
+            convertFromKelvin(temperature);
+            break;
+        default:
+            printf("Invalid unit of measurement.\n");
+            break;
+    }
+
+    return 0;
+}
+
+void convertFromCelsius(float temp) {
+    float fahrenheit = (temp * 9 / 5) + 32;
+    float kelvin = temp + 273.15;
+    printf("Temperature in Fahrenheit: %.2f F\n", fahrenheit);
+    printf("Temperature in Kelvin: %.2f K\n", kelvin);
+}
+
+void convertFromFahrenheit(float temp) {
+    float celsius = (temp - 32) * 5 / 9;
+    float kelvin = (temp - 32) * 5 / 9 + 273.15;
+    printf("Temperature in Celsius: %.2f C\n", celsius);
+    printf("Temperature in Kelvin: %.2f K\n", kelvin);
+}
+
+void convertFromKelvin(float temp) {
+    float celsius = temp - 273.15;
+    float fahrenheit = (temp - 273.15) * 9 / 5 + 32;
+    printf("Temperature in Celsius: %.2f C\n", celsius);
+    printf("Temperature in Fahrenheit: %.2f F\n", fahrenheit);
+}
+
